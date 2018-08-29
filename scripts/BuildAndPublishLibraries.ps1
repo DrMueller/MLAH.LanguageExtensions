@@ -1,7 +1,8 @@
 function buildLibrary([String] $libraryName) {
-    Write-Host 'Building' $libraryName
-    npm run ng build --prod $libraryName # https://github.com/angular/angular-cli/issues/5955
-    Write-Host 'Builded' $libraryName
+  Write-Host '!!!!Building' $libraryName
+  Write-Host 'I am here: ' + $PSScriptRoot
+  npm run ng build --prod $libraryName # https://github.com/angular/angular-cli/issues/5955
+  Write-Host '!!!!Builded' $libraryName
 }
 function packLibrary([String] $libraryName) {
     # Navigate to the dist Path
@@ -41,5 +42,5 @@ $libraryNames = getLibraryNames
 foreach($libraryName in $libraryNames)
 {
     buildLibrary($libraryName)
-    packLibrary($libraryName)
+    # packLibrary($libraryName)
 }
