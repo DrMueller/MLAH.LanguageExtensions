@@ -8,7 +8,7 @@ function packLibrary([String] $libraryName) {
     $originalPath = $PSScriptRoot
     $distPath = getDistPathForLibrary($libraryName)
 
-    $relativeDistPath = (get-item $scriptPath).parent.FullName + $distPath
+    $relativeDistPath = (get-item $originalPath).parent.FullName + $distPath
     Set-Location $relativeDistPath
 
     # Pack the Library
