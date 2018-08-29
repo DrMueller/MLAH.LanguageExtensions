@@ -122,51 +122,11 @@
         }
       }
     },
-    "@drmueller/language-extensionslanguage-extensions": {
-      "root": "projects/drmueller/language-extensionslanguage-extensions",
-      "sourceRoot": "projects/drmueller/language-extensionslanguage-extensions/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/drmueller/language-extensionslanguage-extensions/tsconfig.lib.json",
-            "project": "projects/drmueller/language-extensionslanguage-extensions/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/drmueller/language-extensionslanguage-extensions/ng-package.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/drmueller/language-extensionslanguage-extensions/src/test.ts",
-            "tsConfig": "projects/drmueller/language-extensionslanguage-extensions/tsconfig.spec.json",
-            "karmaConfig": "projects/drmueller/language-extensionslanguage-extensions/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/drmueller/language-extensionslanguage-extensions/tsconfig.lib.json",
-              "projects/drmueller/language-extensionslanguage-extensions/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "@drmueller/language-extensions": {
       "root": "projects/drmueller/language-extensions",
       "sourceRoot": "projects/drmueller/language-extensions/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "drm",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
