@@ -31,6 +31,4 @@ function getDistPathForLibrary([String] $libraryName) {
   return $result
 }
 
-
-
 Export-ModuleMember -Function *
