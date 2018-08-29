@@ -15,6 +15,20 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@drmueller/language-extensionslanguage-extensions": [
+        "dist/drmueller/language-extensionslanguage-extensions"
+      ],
+      "@drmueller/language-extensionslanguage-extensions/*": [
+        "dist/drmueller/language-extensionslanguage-extensions/*"
+      ],
+      "@drmueller/language-extensions": [
+        "dist/drmueller/language-extensions"
+      ],
+      "@drmueller/language-extensions/*": [
+        "dist/drmueller/language-extensions/*"
+      ]
+    }
   }
 }
