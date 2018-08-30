@@ -1,29 +1,28 @@
 function buildLibrary([String] $libraryName) {
   Write-Host 'Building' $libraryName
-  Write-Host 'I am here:' + $PSScriptRoot
   npm run ng build --prod $libraryName # https://github.com/angular/angular-cli/issues/5955
   Write-Host 'Builded' $libraryName
 }
 function packLibrary([String] $libraryName) {
-    # Navigate to the dist Path
-    $originalPath = $PSScriptRoot
-    $distPath = getDistPathForLibrary($libraryName)
+  # Navigate to the dist Path
+  $originalPath = $PSScriptRoot
+  $distPath = getDistPathForLibrary($libraryName)
 
-    $relativeDistPath = (get-item $originalPath).parent.FullName + "/" + $distPath
-    Set-Location $relativeDistPath
+  $relativeDistPath = (get-item $originalPath).parent.FullName + "/" + $distPath
+  Set-Location $relativeDistPath
 
-    # Pack the Library
-    Write-Host 'Packing' $libraryName
-    npm pack
-    Write-Host 'Packed' $libraryName
-    Write-Host 'tra' $disPath;
+  # Pack the Library
+  Write-Host 'Packing' $libraryName
+  npm pack
+  Write-Host 'Packed' $libraryName
+  Write-Host 'tra' $distPath;
 
-    # get the Targz and publish it
-    # $targzFile = Get-ChildItem -File *.tgz
-    # npm publish $targzFile --access public
+  # get the Targz and publish it
+  # $targzFile = Get-ChildItem -File *.tgz
+  # npm publish $targzFile --access public
 
-    # Back to the original Path
-    Set-Location $originalPath
+  # Back to the original Path
+  Set-Location $originalPath
 }
 
 # ------------ Core Start
@@ -42,8 +41,7 @@ loadModules
 
 $libraryNames = getLibraryNames
 
-foreach($libraryName in $libraryNames)
-{
-    buildLibrary($libraryName)
-     packLibrary($libraryName)
+foreach ($libraryName in $libraryNames) {
+  buildLibrary($libraryName)
+  packLibrary($libraryName)
 }
