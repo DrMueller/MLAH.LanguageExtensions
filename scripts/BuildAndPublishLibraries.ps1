@@ -7,15 +7,20 @@ function packLibrary([String] $libraryName) {
   # Navigate to the dist Path
   $originalPath = $PSScriptRoot
   $distPath = getDistPathForLibrary($libraryName)
+  $rootPath = (get-item $originalPath).parent.FullName
 
-  $relativeDistPath = (get-item $originalPath).parent.FullName + "/" + $distPath
+  $relativeDistPath = $rootPath + "/" + $distPath
   Set-Location $relativeDistPath
 
   # Pack the Library
   Write-Host 'Packing' $libraryName
   npm pack
   Write-Host 'Packed' $libraryName
-  Write-Host 'tra' $distPath;
+
+  # Copy to publish
+  $publishPath = $rootPath + "/publish"
+  Write-Host 'Publishing to' $publishPath
+  Get-ChildItem -File *.tgz | ForEach-Object { copy-item -Path $_ -Destination  $publishPath -Force -Container }
 
   # get the Targz and publish it
   # $targzFile = Get-ChildItem -File *.tgz
