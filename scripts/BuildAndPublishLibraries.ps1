@@ -46,7 +46,8 @@ function createOrClearDirectory([string] $directoryPath) {
   }
   else
   {
-    Remove-Item $directoryPath | Where-Object { ! $_.PSIsContainer }
+    Get-ChildItem -Path $directoryPath -Force -Recurse | Remove-Item -Recurse -Force
+    # Remove-Item $directoryPath | Where-Object { ! $_.PSIsContainer }
   }
 }
 
