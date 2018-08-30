@@ -1,15 +1,15 @@
 function buildLibrary([String] $libraryName) {
   Write-Host 'Building' $libraryName
   npm run ng build --prod $libraryName # https://github.com/angular/angular-cli/issues/5955
-  Write-Host 'Builded' $libraryName
 }
 function packLibrary([String] $libraryName) {
   # Navigate to the dist Path
   $originalPath = $PSScriptRoot
   $distPath = getDistPathForLibrary($libraryName)
   $rootPath = (get-item $originalPath).parent.FullName
+  $publishPath = $rootPath + "\publish\"
+  $relativeDistPath = $rootPath + "\" + $distPath
 
-  $relativeDistPath = $rootPath + "/" + $distPath
   Set-Location $relativeDistPath
 
   # Clear TGZ files
@@ -19,9 +19,6 @@ function packLibrary([String] $libraryName) {
   # Pack the Library
   Write-Host 'Packing' $libraryName
   npm pack
-  Write-Host 'Packed' $libraryName
-
-  $publishPath = $rootPath + "\publish\"
 
   # Set up publish folder
   createOrClearDirectory($publishPath)
