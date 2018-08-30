@@ -12,15 +12,24 @@ function packLibrary([String] $libraryName) {
   $relativeDistPath = $rootPath + "/" + $distPath
   Set-Location $relativeDistPath
 
+  # Clear TGZ files
+  Write-Host 'Removing old TGZ files'
+  Remove-Item *.tgz
+
   # Pack the Library
   Write-Host 'Packing' $libraryName
   npm pack
   Write-Host 'Packed' $libraryName
 
   # Copy to publish
-  $publishPath = $rootPath + "/publish"
+  $publishPath = $rootPath + "\publish"
   Write-Host 'Publishing to' $publishPath
-  Get-ChildItem -File *.tgz | ForEach-Object { copy-item -Path $_ -Destination  $publishPath -Force -Container }
+  createOrClearDirectory($publishPath)
+  
+  [array] $tgzFiles = Get-ChildItem -File *.tgz
+  Write-Host 'Found tgz' $tgzFiles.Count
+
+  $tgzFiles | ForEach-Object { copy-item -Path $_ -Destination  $publishPath -Force -Container }
 
   # get the Targz and publish it
   # $targzFile = Get-ChildItem -File *.tgz
@@ -28,6 +37,17 @@ function packLibrary([String] $libraryName) {
 
   # Back to the original Path
   Set-Location $originalPath
+}
+
+function createOrClearDirectory([string] $directoryPath) {
+  If(!(test-path $directoryPath))
+  {
+    New-Item -ItemType Directory -Force -publishPath $directoryPath
+  }
+  else
+  {
+    Remove-Item $directoryPath | Where-Object { ! $_.PSIsContainer }
+  }
 }
 
 # ------------ Core Start
