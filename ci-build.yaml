@@ -1,0 +1,57 @@
+resources:
+- repo: self
+queue:
+  name: Default
+  demands: npm
+
+steps:
+- task: Npm@1
+  displayName: Install
+  inputs:
+    verbose: false
+
+
+- task: Npm@1
+  displayName: 'NG Lint'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run ng lint'
+
+
+- task: Npm@1
+  displayName: 'NG Unit Tests'
+  inputs:
+    command: custom
+
+    verbose: false
+
+    customCommand: 'run test-lib-headless'
+
+
+- powershell: ./ scripts/UpdatePackageVersion.ps1 
+  arguments: '-buildVersion $(Build.BuildNumber)'
+
+  displayName: 'Update Package Version'
+
+- powershell: ./ scripts/BuildAndPack.ps1 
+  displayName: 'Build and Pack'
+
+- task: Npm@1
+  displayName: Publish
+  inputs:
+    command: custom
+
+    workingDir: publish
+
+    verbose: false
+
+    customCommand: 'publish export.tgz --access public'
+
+    customEndpoint: NPM
+
+    publishEndpoint: NPM
+
+
