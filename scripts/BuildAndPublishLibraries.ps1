@@ -29,7 +29,7 @@ function packLibrary([String] $libraryName) {
   [array] $tgzFiles = Get-ChildItem -File *.tgz
   Write-Host 'Found tgz' $tgzFiles.Count
 
-  $tgzFiles | ForEach-Object { copy-item -Path $_ -Destination  $publishPath -Force -Container }
+  $tgzFiles | ForEach-Object { copy-item -Path $_ -Destination $publishPath -Force -Container }
 
   # get the Targz and publish it
   # $targzFile = Get-ChildItem -File *.tgz
@@ -42,7 +42,7 @@ function packLibrary([String] $libraryName) {
 function createOrClearDirectory([string] $directoryPath) {
   If(!(test-path $directoryPath))
   {
-    New-Item -ItemType Directory -Force -publishPath $directoryPath
+    New-Item -ItemType Directory -Force -Path $directoryPath
   }
   else
   {
