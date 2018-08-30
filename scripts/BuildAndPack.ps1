@@ -21,12 +21,18 @@ function packLibrary([String] $libraryName) {
   npm pack
   Write-Host 'Packed' $libraryName
 
-  # Copy to publish
   $publishPath = $rootPath + "\publish\"
+
+  # Set up publish folder
   createOrClearDirectory($publishPath)
   
+  # Get the tgz
   $tgzFile = Get-ChildItem -File *.tgz | Select-Object -first 1
+  
+  # Rename the tgz
   $tgzFile = Rename-Item -Path $tgzFile -NewName "export.tgz" -PassThru
+
+  # Copy the tgz to the publish folder
   Copy-Item -Path $tgzFile -Destination $publishPath -Force -Container
   
   # Back to the original Path
@@ -41,7 +47,6 @@ function createOrClearDirectory([string] $directoryPath) {
   else
   {
     Get-ChildItem -Path $directoryPath -Force -Recurse | Remove-Item -Recurse -Force
-    # Remove-Item $directoryPath | Where-Object { ! $_.PSIsContainer }
   }
 }
 
