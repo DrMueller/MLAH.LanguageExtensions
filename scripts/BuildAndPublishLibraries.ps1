@@ -27,8 +27,12 @@ function packLibrary([String] $libraryName) {
   createOrClearDirectory($publishPath)
   
   $tgzFile = Get-ChildItem -File *.tgz | Select-Object -first 1
-  Rename-Item -Path $tgzFile -NewName "export.tgz"
-  copy-item -Path $tgzFile -Destination $publishPath -Force -Container
+  Write-Host '1' $tgzFile
+
+  $tgzFile = Rename-Item -Path $tgzFile -NewName "export.tgz" - PassThru
+  Write-Host '2' $tgzFile
+
+  Copy-Item -Path $tgzFile -Destination $publishPath -Force -Container
 
   # get the Targz and publish it
   # $targzFile = Get-ChildItem -File *.tgz
