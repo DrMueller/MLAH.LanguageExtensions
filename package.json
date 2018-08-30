@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-headless": "ng test @drmueller/language-extensions --browsers=ChromeHeadless --watch=false"
+    "test-lib": "ng test @drmueller/language-extensions",
+    "test-lib-headless": "ng test @drmueller/language-extensions --browsers=ChromeHeadless --watch=false"
   },
   "dependencies": {
     "@angular/common": "^6.0.3",
