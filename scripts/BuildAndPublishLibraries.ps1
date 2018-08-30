@@ -29,7 +29,7 @@ function packLibrary([String] $libraryName) {
   $tgzFile = Get-ChildItem -File *.tgz | Select-Object -first 1
   Write-Host '1' $tgzFile
 
-  $tgzFile = Rename-Item -Path $tgzFile -NewName "export.tgz" - PassThru
+  $tgzFile = Rename-Item -Path $tgzFile -NewName "export.tgz" -PassThru
   Write-Host '2' $tgzFile
 
   Copy-Item -Path $tgzFile -Destination $publishPath -Force -Container
