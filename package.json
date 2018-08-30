@@ -10,7 +10,6 @@
     "e2e": "ng e2e",
     "test-headless": "ng test @drmueller/language-extensions --browsers=ChromeHeadless --watch=false"
   },
-  "private": true,
   "dependencies": {
     "@angular/common": "^6.0.3",
     "@angular/core": "^6.0.3",

@@ -1,8 +1,8 @@
 function buildLibrary([String] $libraryName) {
-  Write-Host '!!!!Building' $libraryName
-  Write-Host 'I am here: ' + $PSScriptRoot
+  Write-Host 'Building' $libraryName
+  Write-Host 'I am here:' + $PSScriptRoot
   npm run ng build --prod $libraryName # https://github.com/angular/angular-cli/issues/5955
-  Write-Host '!!!!Builded' $libraryName
+  Write-Host 'Builded' $libraryName
 }
 function packLibrary([String] $libraryName) {
     # Navigate to the dist Path
@@ -13,11 +13,14 @@ function packLibrary([String] $libraryName) {
     Set-Location $relativeDistPath
 
     # Pack the Library
+    Write-Host 'Packing' $libraryName
     npm pack
+    Write-Host 'Packed' $libraryName
+    Write-Host 'tra' $disPath;
 
     # get the Targz and publish it
-    $targzFile = Get-ChildItem -File *.tgz
-    npm publish $targzFile --access public
+    # $targzFile = Get-ChildItem -File *.tgz
+    # npm publish $targzFile --access public
 
     # Back to the original Path
     Set-Location $originalPath
@@ -42,5 +45,5 @@ $libraryNames = getLibraryNames
 foreach($libraryName in $libraryNames)
 {
     buildLibrary($libraryName)
-    # packLibrary($libraryName)
+     packLibrary($libraryName)
 }
