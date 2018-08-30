@@ -22,7 +22,7 @@ function packLibrary([String] $libraryName) {
   Write-Host 'Packed' $libraryName
 
   # Copy to publish
-  $publishPath = $rootPath + "\publish"
+  $publishPath = $rootPath + "\publish\"
   Write-Host 'Publishing to' $publishPath
   createOrClearDirectory($publishPath)
   
