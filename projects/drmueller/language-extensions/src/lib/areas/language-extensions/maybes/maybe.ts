@@ -2,7 +2,6 @@ import { IMaybe } from '.';
 import { None, Some } from './implementation';
 
 export class Maybe {
-
   public static CreateNone<T>(): IMaybe<T> {
     return new None<T>();
   }

@@ -5,11 +5,10 @@ describe('None', () => {
   const sut = new None();
 
   describe('evaluating', () => {
-
     describe('with some- and none-action', () => {
       // Arrange
       let someActionWasCalled = false;
-      const someAction: GenericAction<string> = (str: string) => {
+      const someAction: GenericAction<string> = (_: string) => {
         someActionWasCalled = true;
       };
 

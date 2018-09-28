@@ -10,8 +10,4 @@ export class Some<T> implements IMaybe<T> {
       whenSome(this.value);
     }
   }
-
-  public get isSome(): boolean {
-    return true;
-  }
 }

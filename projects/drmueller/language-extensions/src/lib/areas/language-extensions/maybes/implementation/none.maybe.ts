@@ -8,8 +8,4 @@ export class None<T> implements IMaybe<T> {
       whenNone();
     }
   }
-
-  public get isSome(): boolean {
-    return false;
-  }
 }

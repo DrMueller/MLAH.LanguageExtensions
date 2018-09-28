@@ -10,7 +10,7 @@ describe('ActionEvent', () => {
 
   describe('Subscribing', () => {
     let actionWasCalled = false;
-    const mockAction: GenericAction<any> = ((args) => {
+    const mockAction: GenericAction<any> = ((_) => {
       actionWasCalled = true;
     });
 
@@ -28,7 +28,7 @@ describe('ActionEvent', () => {
 
   describe('Unsubscribing and firing the event does not fire the callback', () => {
     let actionWasCalled = false;
-    const mockAction: GenericAction<any> = ((args) => {
+    const mockAction: GenericAction<any> = ((_) => {
       actionWasCalled = true;
     });
 
