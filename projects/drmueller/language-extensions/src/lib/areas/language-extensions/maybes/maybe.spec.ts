@@ -20,14 +20,14 @@ describe('maybe', () => {
     });
 
     describe('for some', () => {
-      const sut = Maybe.CreateSome('tra');
+      const sut = Maybe.createSome('tra');
       it('returns type some', () => {
         expect(sut).toEqual(jasmine.any(Some));
       });
     });
 
     describe('for none', () => {
-      const sut = Maybe.CreateNone();
+      const sut = Maybe.createNone();
       it('returns type none', () => {
         expect(sut).toEqual(jasmine.any(None));
       });

@@ -2,11 +2,11 @@ import { IMaybe } from '.';
 import { None, Some } from './implementation';
 
 export class Maybe {
-  public static CreateNone<T>(): IMaybe<T> {
+  public static createNone<T>(): IMaybe<T> {
     return new None<T>();
   }
 
-  public static CreateSome<T>(value: T): IMaybe<T> {
+  public static createSome<T>(value: T): IMaybe<T> {
     return new Some<T>(value);
   }
 
