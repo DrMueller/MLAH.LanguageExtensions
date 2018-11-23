@@ -1,2 +1,2 @@
 export * from './parameterless-constructor.interface';
-export * from './name-value-pair.interface';
+export * from './key-value-pair.interface';
