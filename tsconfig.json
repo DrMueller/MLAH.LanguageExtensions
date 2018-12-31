@@ -19,12 +19,6 @@
       "dom"
     ],
     "paths": {
-      "@drmueller/language-extensionslanguage-extensions": [
-        "dist/drmueller/language-extensionslanguage-extensions"
-      ],
-      "@drmueller/language-extensionslanguage-extensions/*": [
-        "dist/drmueller/language-extensionslanguage-extensions/*"
-      ],
       "@drmueller/language-extensions": [
         "dist/drmueller/language-extensions"
       ],
