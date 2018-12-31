@@ -140,7 +140,7 @@
             }
           }
         },
-        "test": {
+        "unit-test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/drmueller/language-extensions/src/test.ts",

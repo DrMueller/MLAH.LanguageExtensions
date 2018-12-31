@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-lib-prod": "ng build @drmueller/ng-base-services --prod",
-    "unit-test-lib": "ng run @drmueller/ng-base-services:unit-test"
+    "build-lib-prod": "ng build @drmueller/language-extensions --prod",
+    "unit-test-lib": "ng run @drmueller/language-extensions:unit-test"
   },
   "dependencies": {
     "@angular/common": "^6.0.3",
