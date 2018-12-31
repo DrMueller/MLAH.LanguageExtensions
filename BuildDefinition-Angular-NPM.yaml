@@ -26,16 +26,6 @@ steps:
 
 
 - task: Npm@1
-  displayName: 'NPM NG Run End2End Tests'
-  inputs:
-    command: custom
-
-    verbose: false
-
-    customCommand: 'run e2e-ci'
-
-
-- task: Npm@1
   displayName: 'NPM NG Unit Tests'
   inputs:
     command: custom
