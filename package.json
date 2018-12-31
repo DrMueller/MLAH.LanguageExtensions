@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "test-lib": "ng test @drmueller/language-extensions",
-    "test-lib-headless": "ng test @drmueller/language-extensions --browsers=ChromeHeadless --watch=false"
+    "build-lib-prod": "ng build @drmueller/ng-base-services --prod",
+    "unit-test-lib": "ng run @drmueller/ng-base-services:unit-test"
   },
   "dependencies": {
     "@angular/common": "^6.0.3",
